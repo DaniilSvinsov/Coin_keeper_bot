@@ -1,0 +1,36 @@
+lst_data_money = [
+    ('18.07.2023 18:07:34', '10 133 000.00 RUB', 'Оплата в SBERMEGAMARKET . Gorod Moskva RUS', '8888'),
+    ('12.07.2023 18:03:15', '-50.00 RUB', 'Оплата в MOC RIVER KHAUS Gorod Sankt-P RUS', '1234'),
+    ('08.07.2023 00:37:01', '-665.00 RUB', 'Оплата вкусно и точки стаканчика', '8888'),
+    ('18.07.2023 18:07:34', '10 133 000.00 RUB', 'Оплата в SBERMEGAMARKET . Gorod Moskva RUS', '8888'),
+    ('12.07.2023 18:03:15', '-50.00 RUB', 'Оплата в MOC RIVER KHAUS Gorod Sankt-P RUS', '1234'),
+    ('08.07.2023 00:37:01', '-665.00 RUB', 'Оплата вкусно и точки стаканчика', '8888'),
+    ('18.07.2023 18:07:34', '10 133 000.00 RUB', 'Оплата в SBERMEGAMARKET . Gorod Moskva RUS', '8888'),
+    ('12.07.2023 18:03:15', '-50.00 RUB', 'Оплата в MOC RIVER KHAUS Gorod Sankt-P RUS', '1234'),
+    ('08.07.2023 00:37:01', '-665.00 RUB', 'Оплата вкусно и точки стаканчика', '8888'),
+    ('18.07.2023 18:07:34', '10 133 000.00 RUB', 'Оплата в SBERMEGAMARKET . Gorod Moskva RUS', '8888'),
+    ('12.07.2023 18:03:15', '-50.00 RUB', 'Оплата в MOC RIVER KHAUS Gorod Sankt-P RUS', '1234'),
+    ('08.07.2023 00:37:01', '-665.00 RUB', 'Оплата вкусно и точки стаканчика', '8888'),
+    ('18.07.2023 18:07:34', '10 133 000.00 RUB', 'Оплата в SBERMEGAMARKET . Gorod Moskva RUS', '8888'),
+    ('12.07.2023 18:03:15', '-50.00 RUB', 'Оплата в MOC RIVER KHAUS Gorod Sankt-P RUS', '1234'),
+    ('08.07.2023 00:37:01', '-665.00 RUB', 'Оплата вкусно и точки стаканчика', '8888'),
+    ('18.07.2023 18:07:34', '10 133 000.00 RUB', 'Оплата в SBERMEGAMARKET . Gorod Moskva RUS', '8888'),
+    ('12.07.2023 18:03:15', '-50.00 RUB', 'Оплата в MOC RIVER KHAUS Gorod Sankt-P RUS', '1234'),
+    ('18.07.2023 18:07:34', '10 133 000.00 RUB', 'Оплата в SBERMEGAMARKET . Gorod Moskva RUS', '8888'),
+    ('18.07.2023 18:07:34', '10 133 000.00 RUB', 'Оплата в SBERMEGAMARKET . Gorod Moskva RUS', '8888'),
+    ('12.07.2023 18:03:15', '-50.00 RUB', 'Оплата в MOC RIVER KHAUS Gorod Sankt-P RUS', '1234'),
+    ('18.07.2023 18:07:34', '10 133 000.00 RUB', 'Оплата в SBERMEGAMARKET . Gorod Moskva RUS', '8888'),
+    ('12.07.2023 18:03:15', '-50.00 RUB', 'Оплата в MOC RIVER KHAUS Gorod Sankt-P RUS', '1234'),
+    ('18.07.2023 18:07:34', '10 133 000.00 RUB', 'Оплата в SBERMEGAMARKET . Gorod Moskva RUS', '8888'),
+    ('12.07.2023 18:03:15', '-50.00 RUB', 'Оплата в MOC RIVER KHAUS Gorod Sankt-P RUS', '1234'),
+    ('18.07.2023 18:07:34', '10 133 000.00 RUB', 'Оплата в SBERMEGAMARKET . Gorod Moskva RUS', '8888')
+]
+result_sums_money = (123456.33, 11111.11)
+
+dict_transaction_data = {'name': 'Свинцов Даниил Дмитриевич',
+                         'first_date_registration': '12.06.2023',
+                         'first_part_period': '07.08.2023',
+                         'second_part_period': '07.08.2024',
+                         'number_agreement': '0000000001',
+                         'personal_account_number': '40817810400078617673',
+                         'lst_data_money': lst_data_money}
