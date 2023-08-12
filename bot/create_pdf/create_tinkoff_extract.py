@@ -25,10 +25,10 @@ def create_last_page():
     packet1 = BytesIO()
     can_last = canvas.Canvas(packet1, pagesize=letter)
     can_last.setFont("Helvetica", 9)
-    can_last.drawString(120, 800, str(result_sums_money[0]))
-    can_last.drawString(220, 790, f'{result_sums_money[1]} RUB')
+    can_last.drawString(110.5, 773.5, f'{result_sums_money[0]} RUB')
+    can_last.drawString(93, 752.5, f'{result_sums_money[1]} RUB')
     can_last.save()
-    create_page(packet1, "tinkof_last_template.pdf", "qwe.pdf")
+    create_page(packet1, "tinkoff_last_template.pdf", "tinkoff_last_page.pdf")
 
 
 def create_tinkoff_add_template():
@@ -40,30 +40,35 @@ def create_tinkoff_add_template():
 
 def add_payment(page_template: canvas, step: int, new_page=False) -> None:
     flag = 0
+    step_to_add = 0
     if new_page:
-        page_template, packet_add = create_tinkoff_add_template()
-        flag = 123
+        page_template, packet_add1 = create_tinkoff_add_template()
+        flag = 2
+        step_to_add = 355.5
 
     page_template.setFont(faceName + '1251', 9)
     if transaction[0][0] == '0':
-        page_template.drawString(56, 505 - step, transaction[0])
-        page_template.drawString(56, 492.5 - step, transaction[0])
+        page_template.drawString(56, 505 - step + step_to_add, transaction[0])
+        page_template.drawString(56, 492.5 - step + step_to_add, transaction[0])
     else:
-        page_template.drawString(55, 505 - step, transaction[0])
-        page_template.drawString(55, 492.5 - step, transaction[0])
-    page_template.drawString(165, 500 - step, transaction[1])
-    page_template.drawString(260, 500 - step, transaction[1])
+        page_template.drawString(55, 505 - step + step_to_add, transaction[0])
+        page_template.drawString(55, 492.5 - step + step_to_add, transaction[0])
+    page_template.drawString(165, 500 - step + step_to_add, transaction[1])
+    page_template.drawString(260, 500 - step + step_to_add, transaction[1])
     if len(transaction[2]) >= 43:
-        page_template.drawString(355, 504 - step, transaction[2][:21])
-        page_template.drawString(355, 494 - step, transaction[2][21:43] + '...')
+        page_template.drawString(355, 504 - step + step_to_add, transaction[2][:21])
+        page_template.drawString(355, 494 - step + step_to_add, transaction[2][21:43] + '...')
     elif len(transaction[2]) >= 21:
-        page_template.drawString(355, 504 - step, transaction[2][:21])
-        page_template.drawString(355, 494 - step, transaction[2][21:])
+        page_template.drawString(355, 504 - step + step_to_add, transaction[2][:21])
+        page_template.drawString(355, 494 - step + step_to_add, transaction[2][21:])
     else:
-        page_template.drawString(355, 500 - step, transaction[2])
-    page_template.drawString(500, 500 - step, transaction[3])
-    page_template.line(56.5, 489.5 - step, 539.5, 489.5 - step)
+        page_template.drawString(355, 500 - step + step_to_add, transaction[2])
+    page_template.drawString(500, 500 - step + step_to_add, transaction[3])
+    page_template.line(56.5, 489.5 - step + step_to_add + flag, 539.5, 489.5 - step + step_to_add + flag)
 
+    if flag == 2:
+        page_template.save()
+        create_page(packet_add1, "tinkoff_add_template.pdf", "tinkoff.pdf")
 
 
 s = time()
@@ -89,23 +94,25 @@ can_first.drawString(494.5, 717, dict_transaction_data['first_part_period'])
 
 # Проход по транзакциям взятым из бд
 step_between_payments = 25
-for count, transaction in enumerate(dict_transaction_data['lst_data_money'], 1):
-    print(count)
-    if count > 18:
-        add_payment('', step_between_payments * (count - 30), True)
-    else:
+for count in range(
+        (len(dict_transaction_data['lst_data_money']) + 10) // 27 + 1):  # 10 получается из (-16 + 27 - 1)
+    print(count)  # и теперь сюда передается количество страниц и они будут создаваться в add_payment
+    """if count > 16 and count % 17 == 0:
+        add_payment('', step_between_payments * (count - 16), True)
+    elif count <= 16:
         add_payment(can_first, step_between_payments * (count - 1))
-
+    else:
+        pass"""
 can_first.save()
 
-create_page(packet, "first_tinkoff_template.pdf", "aaaa.pdf")
+create_page(packet, "first_tinkoff_template.pdf", "first_tinkoff_page.pdf")
 
 create_last_page()
 
 merger = PdfWriter()
-merger.append("aaaa.pdf")
-merger.append("qwe.pdf")
-merger.write("asd.pdf")
+merger.append("first_tinkoff_page.pdf")
+merger.append("tinkoff_last_page.pdf")
+merger.write("result_tinkoff.pdf")
 merger.close()
 
 print(time() - s)
